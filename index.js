@@ -615,6 +615,16 @@ function sendButtonGetLocation(token,messages) {
   );
 }
 
+function sendBroadcastMessageTemp(token, message){
+  console.log("sendBroadcastMessage");
+  return client.broadcast({
+    type: "text",
+    text: '今日の体温登録お願いします'
+  }
+  ).then(data => console.log(data))
+  .catch(e => console.log(e))
+}
+
 function sendButtonOk(token,messages) {
   
   console.log("sent ok button");
