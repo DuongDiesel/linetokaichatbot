@@ -246,9 +246,11 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
           userAdd:userAdd,
           time_update:timeOfMessage          
         };
-
+        //neu thanh cong thi :
         updateInfoUser(sender,senddataSub3);
-        handleMessages( messages,replyToken);     
+        handleMessages( messages,replyToken);
+        
+        //neu that bai thi bao that bai
       }
     break;
 
