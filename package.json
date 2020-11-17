@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "node test.js",
-    "job-hello":"node hello.js"
+    "job-hello":"node hello.js",
+    "send-temp":"node sendtemp.js"
   },
   "dependencies": {
     "dialogflow": "^1.1.1",
