@@ -857,8 +857,9 @@ function check_user(id,pass){
                 //console.log(result.rows[0].pass) ;
                 if(pass==result.rows[0].pass){
                   //console.log('mat khau chinh xac') ;
+                  res = 2
                   //sendTextMessage(replyToken,"mat khau chinh xac");
-                  return console.log('mat khau chinh xac') ;;
+                  return res;
                 }else{
                   console.log('sai mat khau') ;
                   //sendTextMessage(replyToken,"sai mat khau");
