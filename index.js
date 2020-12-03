@@ -831,7 +831,7 @@ function check_user(id,pass,sender,senddataSub3,messages,replyToken){
             if (err) {
                 console.log('Query error: ' + err);
                 sendTextMessage(replyToken,"入力した学生番号が存在しない、管理者に連絡してください。");
-                handleMessages( messages,replyToken);
+                //handleMessages( messages,replyToken);
             } else {
                 if(pass==result.rows[0].pass){
                   console.log('mat khau chinh xac') ;
@@ -840,7 +840,7 @@ function check_user(id,pass,sender,senddataSub3,messages,replyToken){
                 }else{
                   console.log('sai mat khau') ;
                   sendTextMessage(replyToken,"入力したパスワードは間違っています。");
-                  handleMessages( messages,replyToken);
+                  //handleMessages( messages,replyToken);
                 }
                 
             }
