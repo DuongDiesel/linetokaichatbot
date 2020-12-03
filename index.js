@@ -252,7 +252,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
         handleMessages( messages,replyToken);
         
         //neu that bai thi bao that bai
-        if(pass != ''){check_user(username,pass);}
+        if(pass != ''){check_user(userID,pass);}
         
       }
     break;
@@ -830,7 +830,7 @@ function check_user(id,pass){
                 console.log(id) ;
                 console.log('kq la :') ;
                 console.log(result) ;
-                    
+                
                 
             }
         });
