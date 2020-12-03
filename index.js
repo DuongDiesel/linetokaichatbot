@@ -848,7 +848,7 @@ function check_user(id,pass){
                 console.log('Query error: ' + err);
                 console.log('tai khoan chua duoc dk') ;
                 //sendTextMessage(replyToken,"tai khoan chua duoc dk");
-                return res = 1;
+                return 1;
             } else {
                 //console.log('id la :') ;
                 //console.log(id) ;
@@ -857,11 +857,11 @@ function check_user(id,pass){
                 if(pass==result.rows[0].pass){
                   console.log('mat khau chinh xac') ;
                   //sendTextMessage(replyToken,"mat khau chinh xac");
-                  return res = 2;
+                  return 2;
                 }else{
                   console.log('sai mat khau') ;
                   //sendTextMessage(replyToken,"sai mat khau");
-                  return res = 3;
+                  return 3;
                 }
                 
             }
