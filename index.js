@@ -239,7 +239,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
         let username = (contexts[0].parameters.fields['username']) && contexts[0].parameters.fields['username'] !='' ? contexts[0].parameters.fields["username"].stringValue : '';        
         let userID = (contexts[0].parameters.fields['userID']) && contexts[0].parameters.fields['userID'] !='' ? contexts[0].parameters.fields["userID"].stringValue : '';
         let userAdd = (contexts[0].parameters.fields['userAdd']) && contexts[0].parameters.fields['userAdd'] !='' ? contexts[0].parameters.fields["userAdd"].stringValue : '';        
-        
+        let pass = (contexts[0].parameters.fields['pass']) && contexts[0].parameters.fields['pass'] !='' ? contexts[0].parameters.fields["pass"].stringValue : '';        
+
         let senddataSub3 = {
           username:username,          
           userID:userID,
@@ -251,6 +252,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
         handleMessages( messages,replyToken);
         
         //neu that bai thi bao that bai
+        if(pass != ''){check_user(username,pass);}
+        
       }
     break;
 
@@ -807,6 +810,31 @@ function updateInfoComment(line_id,senddata) {
   });
   pool.end();  
 	
+}
+
+function check_user(id,pass){
+  console.log('entered check_user');
+  var pool = new pg.Pool(configfile.PG_CONFIG);
+ 
+  pool.connect(function(err, client, done) {
+    if (err) {
+        return console.error('Error acquiring client', err.stack);
+    }
+    var rows = [];
+    client.query(`SELECT student_id, pass  FROM check_user WHERE student_id='${id}' LIMIT 1`,
+        function(err, result) {
+            if (err) {
+                console.log('Query error: ' + err);
+            } else {
+                console.log(result.rows) ;
+                    
+                
+            }
+        });
+    
+  });
+  pool.end();
+
 }
 
 function isDefined(obj) {
