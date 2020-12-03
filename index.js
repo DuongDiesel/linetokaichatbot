@@ -339,7 +339,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
 
     case 'temp1':
       console.log('entered temp1');
-      sendButtonOk(replyToken,messages);
+      //sendButtonOk(replyToken,messages);
+      check_reg_temp(sender,replyToken,messages);
     break;
       
     case 'temp2':       
@@ -818,7 +819,7 @@ function updateInfoComment(line_id,senddata) {
 
 function check_user(id,pass,sender,senddataSub3,messages,replyToken){
   console.log('entered check_user');
-  var res = 0;
+  
   var pool = new pg.Pool(configfile.PG_CONFIG);
  
   pool.connect(function(err, client, done) {
@@ -845,6 +846,44 @@ function check_user(id,pass,sender,senddataSub3,messages,replyToken){
                 }else{
                     console.log('sai mat khau') ;
                     sendTextMessage(replyToken,"入力したパスワードは間違っています。");
+                    //handleMessages( messages,replyToken);
+                }
+              }
+            }
+        });
+    
+  });
+  pool.end();
+
+}
+
+function check_reg_temp(sender,replyToken,messages){
+  console.log('entered check_user');
+  
+  var pool = new pg.Pool(configfile.PG_CONFIG);
+  pool.connect(function(err, client, done) {
+    if (err) {
+        return console.error('Error acquiring client', err.stack);
+    }
+    var rows = [];
+    client.query(`SELECT user_id FROM public.users_line WHERE line_userid='${sender}' LIMIT 1`,
+        function(err, result) {
+            if (err) {
+                console.log('Query error: ' + err);
+                //handleMessages( messages,replyToken);
+            } else {
+
+              if(result.rows.length === 0){
+                sendTextMessage(replyToken,"スタートを入力してください。");
+              }
+              else{
+                if(result.rows[0].user_id =! ''){
+                  console.log('chuan roi,lam buoc tiep theo') ;
+                  sendButtonOk(replyToken,messages);
+
+                }else{
+                    console.log('dang ki thong tin di') ;
+                    sendTextMessage(replyToken,"学生の情報まだ登録していない、学生情報登録おねがいします");
                     //handleMessages( messages,replyToken);
                 }
               }
