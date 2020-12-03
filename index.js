@@ -826,6 +826,7 @@ function check_user(id,pass){
             if (err) {
                 console.log('Query error: ' + err);
             } else {
+                console.log('kq la :') ;
                 console.log(result.rows) ;
                     
                 
