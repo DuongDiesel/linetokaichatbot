@@ -250,7 +250,9 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
         //neu thanh cong thi :
         if(pass != ''){
           var res = check_user(userID,pass);
+          console.log(res) ;
           if(res == 2){
+            console.log('da va duoc mat khau chinh xac') ;
             updateInfoUser(sender,senddataSub3);
             handleMessages( messages,replyToken);
           }
