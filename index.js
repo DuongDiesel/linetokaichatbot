@@ -825,12 +825,17 @@ function check_user(id,pass){
         function(err, result) {
             if (err) {
                 console.log('Query error: ' + err);
+                console.log('tai khoan chua duoc dk') ;
             } else {
-                console.log('id la :') ;
-                console.log(id) ;
-                console.log('kq la :') ;
-                console.log(result.rows[0].pass) ;
-                
+                //console.log('id la :') ;
+                //console.log(id) ;
+                //console.log('kq la :') ;
+                //console.log(result.rows[0].pass) ;
+                if(pass==result.rows[0].pass){
+                  console.log('mat khau chinh xac') ;
+                }else{
+                  console.log('sai mat khau') ;
+                }
                 
             }
         });
