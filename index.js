@@ -821,7 +821,7 @@ function check_user(id,pass){
         return console.error('Error acquiring client', err.stack);
     }
     var rows = [];
-    client.query(`SELECT student_id, pass  FROM public.check_user WHERE student_id='${id}'`,
+    client.query(`SELECT student_id, pass  FROM public.check_user WHERE student_id='${id}' LIMIT 1`,
         function(err, result) {
             if (err) {
                 console.log('Query error: ' + err);
@@ -829,7 +829,7 @@ function check_user(id,pass){
                 console.log('id la :') ;
                 console.log(id) ;
                 console.log('kq la :') ;
-                console.log(result.rows.pass) ;
+                console.log(result.rows[0].pass) ;
                 
                 
             }
