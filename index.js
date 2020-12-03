@@ -249,6 +249,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
         };
         //neu thanh cong thi :
         if(pass != ''){
+          console.log('da va duoc pass ko rong') ;
           var res = check_user(userID,pass);
           console.log(res) ;
           if(res == 2){
