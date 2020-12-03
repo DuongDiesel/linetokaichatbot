@@ -248,11 +248,28 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
           time_update:timeOfMessage          
         };
         //neu thanh cong thi :
-        updateInfoUser(sender,senddataSub3);
-        handleMessages( messages,replyToken);
+        if(pass != ''){
+          var res = check_user(userID,pass);
+          if(res == 2){
+            updateInfoUser(sender,senddataSub3);
+            handleMessages( messages,replyToken);
+          }
+          if(res == 1){
+            sendTextMessage(replyToken,"tai khoan chua duoc dk");
+            handleMessages( messages,replyToken);
+          }
+          if(res == 3){
+            sendTextMessage(replyToken,"sai mat khau");
+            handleMessages( messages,replyToken);
+          }
+          
+          
+        }
+        //updateInfoUser(sender,senddataSub3);
+        //handleMessages( messages,replyToken);
         
-        //neu that bai thi bao that bai
-        if(pass != ''){check_user(userID,pass);}
+        
+        
         
       }
     break;
@@ -826,6 +843,8 @@ function check_user(id,pass){
             if (err) {
                 console.log('Query error: ' + err);
                 console.log('tai khoan chua duoc dk') ;
+                //sendTextMessage(replyToken,"tai khoan chua duoc dk");
+                return 1;
             } else {
                 //console.log('id la :') ;
                 //console.log(id) ;
@@ -833,8 +852,12 @@ function check_user(id,pass){
                 //console.log(result.rows[0].pass) ;
                 if(pass==result.rows[0].pass){
                   console.log('mat khau chinh xac') ;
+                  //sendTextMessage(replyToken,"mat khau chinh xac");
+                  return 2;
                 }else{
                   console.log('sai mat khau') ;
+                  //sendTextMessage(replyToken,"sai mat khau");
+                  return 3;
                 }
                 
             }
