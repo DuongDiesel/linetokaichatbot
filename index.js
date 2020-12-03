@@ -833,6 +833,7 @@ function updateInfoComment(line_id,senddata) {
 
 function check_user(id,pass){
   console.log('entered check_user');
+  var res = 0;
   var pool = new pg.Pool(configfile.PG_CONFIG);
  
   pool.connect(function(err, client, done) {
@@ -846,7 +847,7 @@ function check_user(id,pass){
                 console.log('Query error: ' + err);
                 console.log('tai khoan chua duoc dk') ;
                 //sendTextMessage(replyToken,"tai khoan chua duoc dk");
-                return 1;
+                return res = 1;
             } else {
                 //console.log('id la :') ;
                 //console.log(id) ;
@@ -855,11 +856,11 @@ function check_user(id,pass){
                 if(pass==result.rows[0].pass){
                   console.log('mat khau chinh xac') ;
                   //sendTextMessage(replyToken,"mat khau chinh xac");
-                  return 2;
+                  return res = 2;
                 }else{
                   console.log('sai mat khau') ;
                   //sendTextMessage(replyToken,"sai mat khau");
-                  return 3;
+                  return res = 3;
                 }
                 
             }
