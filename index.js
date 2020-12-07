@@ -255,9 +255,6 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
         updateInfoUser(sender,senddataSub3);
         handleMessages( messages,replyToken);
         
-        
-        
-        
       }
     break;
 
