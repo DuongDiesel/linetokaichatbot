@@ -239,7 +239,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
         let username = (contexts[0].parameters.fields['username']) && contexts[0].parameters.fields['username'] !='' ? contexts[0].parameters.fields["username"].stringValue : '';        
         let userID = (contexts[0].parameters.fields['userID']) && contexts[0].parameters.fields['userID'] !='' ? contexts[0].parameters.fields["userID"].stringValue : '';
         let userAdd = (contexts[0].parameters.fields['userAdd']) && contexts[0].parameters.fields['userAdd'] !='' ? contexts[0].parameters.fields["userAdd"].stringValue : '';        
-        let pass = (contexts[0].parameters.fields['pass']) && contexts[0].parameters.fields['pass'] !='' ? contexts[0].parameters.fields["pass"].stringValue : '';        
+        //let pass = (contexts[0].parameters.fields['pass']) && contexts[0].parameters.fields['pass'] !='' ? contexts[0].parameters.fields["pass"].stringValue : '';        
 
         let senddataSub3 = {
           username:username,          
@@ -248,12 +248,12 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
           time_update:timeOfMessage          
         };
         //neu thanh cong thi :
-        if(pass != ''){
-          console.log('da va duoc pass ko rong') ;
-          check_user(userID,pass,sender,senddataSub3,messages,replyToken);
-        }
-        //updateInfoUser(sender,senddataSub3);
-        //handleMessages( messages,replyToken);
+        // if(pass != ''){
+        //   console.log('da va duoc pass ko rong') ;
+        //   check_user(userID,pass,sender,senddataSub3,messages,replyToken);
+        // }
+        updateInfoUser(sender,senddataSub3);
+        handleMessages( messages,replyToken);
         
         
         
