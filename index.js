@@ -263,7 +263,8 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
 
     case 'safe1':
       console.log('entered safe1');
-      sendButtonOk(replyToken,messages);
+      //sendButtonOk(replyToken,messages);
+      check_reg(sender,replyToken,messages);
     break;
 
     case 'safe2':       
@@ -340,7 +341,7 @@ function handleDialogFlowAction(sender, action, messages, contexts, parameters,r
     case 'temp1':
       console.log('entered temp1');
       //sendButtonOk(replyToken,messages);
-      check_reg_temp(sender,replyToken,messages);
+      check_reg(sender,replyToken,messages);
     break;
       
     case 'temp2':       
@@ -857,8 +858,8 @@ function check_user(id,pass,sender,senddataSub3,messages,replyToken){
 
 }
 
-function check_reg_temp(sender,replyToken,messages){
-  console.log('entered check_user');
+function check_reg(sender,replyToken,messages){
+  console.log('entered check_reg_temp');
   
   var pool = new pg.Pool(configfile.PG_CONFIG);
   pool.connect(function(err, client, done) {
@@ -894,6 +895,7 @@ function check_reg_temp(sender,replyToken,messages){
   pool.end();
 
 }
+
 
 function isDefined(obj) {
   if (typeof obj == 'undefined') {
